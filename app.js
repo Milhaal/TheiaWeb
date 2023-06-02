@@ -2,7 +2,7 @@
 import React from 'react'
 import logo from './logo.svg'
 import './App.css'
-import ContactForm from './contact'
+import ContactForm from './private/contact'
 
 function App() {
   return (

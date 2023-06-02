@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Axios, db } from '../firebase/firebaseConfig'
+import { Axios, db } from '../../firebase/firebaseConfig'
 import './styled.scss'
 
 const ContactForm = () => {
@@ -26,7 +26,7 @@ const ContactForm = () => {
   }
   const sendEmail = () => {
     Axios.post(
-      'https://formtheia-default-rtdb.europe-west1.cloudfunctions.net/submit',
+      'https://us-central1-formtheia.cloudfunctions.net/submit',
       formData
     )
       .then(res => {
@@ -50,12 +50,13 @@ const ContactForm = () => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-      <input 
-        type="text" 
-        name="Nom" 
-        placeholder="Nom" 
-        onChange={updateInput} 
-        value={formData.name || ''}/>     
+      <input
+          type="text"
+          name="Nom"
+          placeholder="Nom"
+          onChange={updateInput}
+          value={formData.name || ''}
+        />     
       <input
           type="text"
           name="Prenom"
