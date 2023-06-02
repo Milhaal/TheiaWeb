@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import Axios from 'axios';
-import { db } from '../../firebase/firebaseConfig';
-import './styled.scss';
+const { useState } = React;
+const Axios = window.axios; // Assuming Axios is loaded globally
+const { db } = window.firebase; // Assuming Firebase db is loaded globally
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({});
@@ -13,7 +12,7 @@ const ContactForm = () => {
     });
   };
 
-  const handleSubmit = event => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     sendEmail();
     setFormData({
@@ -29,10 +28,10 @@ const ContactForm = () => {
 
   const sendEmail = () => {
     Axios.post(
-      'https://us-central1-formtheia.cloudfunctions.net/submit',
+      'https://us-central1-formtheia-default-rtdb.cloudfunctions.net/submit',
       formData
     )
-      .then(res => {
+      .then((res) => {
         db.collection('emails').add({
           Nom: formData.Nom,
           prenom: formData.Prenom,
@@ -44,7 +43,7 @@ const ContactForm = () => {
           time: new Date(),
         });
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   };
