@@ -210,7 +210,7 @@
     </div>
     <img src="img/contact-elipse.png" alt="">
 
-    <form action="contact.php" method="post">
+    <form>
         <div class="form__content">
 
             <div class="grid-base">
@@ -237,7 +237,7 @@
             <div class="grid-base">
                 <div class="contact__category">
                     <label class="contact__label" for="name">Société</label>
-                    <input class="contact__input-small" type="text" id="name" name="user_company" placeholder="Tesla">    
+                    <input class="contact__input-small" type="text" name="Nom" placeholder="Nom" onchange="updateInput(event)" value="">
                 </div>
                 <div class="contact__category">
                     <label class="contact__label" for="name">Sujet <span class="contact__star">&#42;</span></label>
@@ -258,7 +258,8 @@
               </div>
               
                 <div class="contact__footer-bottom">
-                    <button class="green_btn" type="submit" value="Send">Envoyer le Message</button>
+                    <button type="submit">Submit</button>
+                    
                     <p class="contact__footer-btn-under">Réponse sous 48h</p>
                 </div>
                 
