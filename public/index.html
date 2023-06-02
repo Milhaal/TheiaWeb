@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Theia Web</title>
+    <title>Theia Web | L'Agence Web 3.0</title>
+    <link rel="icon" href="img/logo-meta.png" type="image/icon type">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -210,17 +211,18 @@
     </div>
     <img src="img/contact-elipse.png" alt="">
 
-    <form>
+    <form action="contact.php" method="post">
         <div class="form__content">
 
             <div class="grid-base">
-                <div class="contact__category">
-                    <label class="contact__label" for="name">Prénom <span class="contact__star">&#42;</span></label>
-                    <input class="contact__input-small" type="text" id="name" name="user_name" placeholder="Jean">    
-                </div>
+                
                 <div class="contact__category">
                     <label class="contact__label" for="name">Nom <span class="contact__star">&#42;</span></label>
                     <input class="contact__input-small" type="text" id="name" name="user_surname" placeholder="Dupuis">    
+                </div>
+                <div class="contact__category">
+                    <label class="contact__label" for="name">Prénom <span class="contact__star">&#42;</span></label>
+                    <input class="contact__input-small" type="text" id="name" name="user_name" placeholder="Jean">    
                 </div>
             </div>
             <div class="grid-base">
@@ -237,7 +239,7 @@
             <div class="grid-base">
                 <div class="contact__category">
                     <label class="contact__label" for="name">Société</label>
-                    <input class="contact__input-small" type="text" name="Nom" placeholder="Nom" onchange="updateInput(event)" value="">
+                    <input class="contact__input-small" type="text" id="name" name="user_company" placeholder="Tesla">    
                 </div>
                 <div class="contact__category">
                     <label class="contact__label" for="name">Sujet <span class="contact__star">&#42;</span></label>
@@ -258,8 +260,7 @@
               </div>
               
                 <div class="contact__footer-bottom">
-                    <button type="submit">Submit</button>
-                    
+                    <button class="green_btn" type="submit" value="Send">Envoyer le Message</button>
                     <p class="contact__footer-btn-under">Réponse sous 48h</p>
                 </div>
                 
@@ -325,6 +326,15 @@
 
 
 
+<!--ZONE DE TEST-->
+
+
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close"><img src="img/navbar-close.png" alt=""></span>
+      <p id="modalText">Message envoyé</p>
+    </div>
+  </div>
 
 
 
