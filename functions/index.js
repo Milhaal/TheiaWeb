@@ -1,29 +1,32 @@
-import React, { useState } from 'react'
-import { Axios, db } from '../../firebase/firebaseConfig'
-import './styled.scss'
+import React, { useState } from 'react';
+import Axios from 'axios';
+import { db } from '../../firebase/firebaseConfig';
+import './styled.scss';
 
 const ContactForm = () => {
-  const [formData, setFormData] = useState({})
+  const [formData, setFormData] = useState({});
 
-  const updateInput = e => {
+  const updateInput = ({ target }) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
-    })
-  }
+      [target.name]: target.value,
+    });
+  };
+
   const handleSubmit = event => {
-    event.preventDefault()
-    sendEmail()
+    event.preventDefault();
+    sendEmail();
     setFormData({
       Nom: '',
-      prenom:'',
+      Prenom: '',
       email: '',
-      telephone:'',
-      societe:'',
-      sujet:'',
+      telephone: '',
+      societe: '',
+      sujet: '',
       message: '',
-    })
-  }
+    });
+  };
+
   const sendEmail = () => {
     Axios.post(
       'https://us-central1-formtheia.cloudfunctions.net/submit',
@@ -32,38 +35,37 @@ const ContactForm = () => {
       .then(res => {
         db.collection('emails').add({
           Nom: formData.Nom,
-          prenom: formData.prenom,
+          prenom: formData.Prenom,
           email: formData.email,
           telephone: formData.telephone,
           societe: formData.societe,
           sujet: formData.sujet,
           message: formData.message,
-          
           time: new Date(),
-        })
+        });
       })
       .catch(error => {
-        console.log(error)
-      })
-  }
+        console.log(error);
+      });
+  };
 
   return (
     <>
       <form onSubmit={handleSubmit}>
-      <input
+        <input
           type="text"
           name="Nom"
           placeholder="Nom"
           onChange={updateInput}
-          value={formData.name || ''}
-        />     
-      <input
+          value={formData.Nom || ''}
+        />
+        <input
           type="text"
           name="Prenom"
           placeholder="Prenom"
           onChange={updateInput}
-          value={formData.name || ''}
-        />            
+          value={formData.Prenom || ''}
+        />
         <input
           type="email"
           name="email"
@@ -76,22 +78,22 @@ const ContactForm = () => {
           name="telephone"
           placeholder="Telephone"
           onChange={updateInput}
-          value={formData.message || ''}
-        ></input>
+          value={formData.telephone || ''}
+        />
         <input
           type="text"
-          name="Societe"
+          name="societe"
           placeholder="Societe"
           onChange={updateInput}
-          value={formData.message || ''}
-        ></input>
+          value={formData.societe || ''}
+        />
         <input
           type="text"
           name="sujet"
           placeholder="Sujet"
           onChange={updateInput}
-          value={formData.message || ''}
-        ></input>
+          value={formData.sujet || ''}
+        />
         <textarea
           type="text"
           name="message"
@@ -102,5 +104,7 @@ const ContactForm = () => {
         <button type="submit">Submit</button>
       </form>
     </>
-  )
-}
+  );
+};
+
+export default ContactForm;
