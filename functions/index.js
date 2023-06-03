@@ -14,7 +14,7 @@ const transporter = nodemailer.createTransport({
   secure: true,
   auth: {
     user: 'theiaweb.contact@gmail.com',
-    pass: 'xyvbkwpaqcklagxs'
+    pass: 'emdoslhfiwbudwpj'
   }
 });
 
