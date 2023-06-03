@@ -13,7 +13,7 @@ exports.sendMailOverHTTP = functions.https.onRequest(async (req, res) => {
     service: "gmail",
     auth: {
       user: "theiaweb.contact@gmail.com",
-      pass: "emdoslhfiwbudwpj",
+      pass: "GC!4ever*",
     },
   });
 
