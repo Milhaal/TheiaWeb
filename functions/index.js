@@ -1,10 +1,12 @@
 
-
-const functions = require("firebase-functions");
-const admin = require("firebase-admin");
-const nodemailer = require("nodemailer");
+const functions = require('firebase-functions');
+const admin = require('firebase-admin');
+const nodemailer = require('nodemailer');
+const express = require('express');
+const cors = require('cors');
 admin.initializeApp();
-
+const app = express();
+app.use(cors())
 exports.sendMailOverHTTP = functions.https.onRequest(async (req, res) => {
   const { name, email, phone, company, subject, message } = req.body;
 
@@ -24,7 +26,7 @@ exports.sendMailOverHTTP = functions.https.onRequest(async (req, res) => {
     subject: `${company} represented by ${name} : ${subject}`,
     html: `<p>Name: ${name}</p> <p>Email: ${email}</p> <p>Phone: ${phone}</p> <p>Company: ${company}</p> <p>Message: ${message}</p>`,
   };
-
+  exports.sendMailOverHTTP = functions.https.onRequest(async (req, res) => {
   try {
     // Send the email
     await transporter.sendMail(mailOptions);
@@ -33,4 +35,5 @@ exports.sendMailOverHTTP = functions.https.onRequest(async (req, res) => {
     console.error("Error sending email:", error);
     res.status(500).send("Error sending email");
   }
+  }); 
 });
