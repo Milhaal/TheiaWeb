@@ -29,6 +29,8 @@ exports.sendMailOverHTTP = functions.https.onRequest((req, res) => {
         <b>Name: </b>${req.body.name}<br>
         <b>Mobile: </b>${req.body.name}<br>
         <b>Message: </b>${req.body.message}<br>
+        <b>Sujet: </b>${req.body.sujet}<br>
+
       </p>`
   };
 
@@ -45,9 +47,9 @@ exports.sendMailOverHTTP = functions.https.onRequest((req, res) => {
   const leadEmail = req.body.email;
   const leadMobile = req.body.phone;
   const leadMessage = req.body.message;
-
+  const leadSujet = req.body.sujet;
   const settings = {
-    url: "http://127.0.0.1:5001/formtheia/us-central1/sendMailOverHTTP",
+    url: "https://us-central1-formtheia.cloudfunctions.net/sendMailOverHTTP",
     method: "POST",
     timeout: 0,
     headers: {
@@ -57,7 +59,8 @@ exports.sendMailOverHTTP = functions.https.onRequest((req, res) => {
       name: leadName,
       email: leadEmail,
       mobile: leadMobile,
-      message: leadMessage
+      message: leadMessage,
+      sujet: leadSujet
     }
   };
 
