@@ -1,48 +1,36 @@
-const functions = require('firebase-functions');
+
+
+const functions = require("firebase-functions");
 const admin = require("firebase-admin");
-const nodemailer = require('nodemailer');
-const express = require('express');
-const cors = require('cors');
-
+const nodemailer = require("nodemailer");
 admin.initializeApp();
-const app = express();
-app.use(cors());
 
-const transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
-  port: 465,
-  secure: true,
-  auth: {
-    user: 'theiaweb.contact@gmail.com',
-    pass: 'emdoslhfiwbudwpj'
-  }
-});
+exports.sendMailOverHTTP = functions.https.onRequest(async (req, res) => {
+  const { name, email, phone, company, subject, message } = req.body;
 
-app.post('/sendMailOverHTTP', (req, res) => {
-  const { email, name, phone, message, sujet } = req.body;
+  // Create a transporter object using the default SMTP transport
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: "theiaweb.contact@gmail.com",
+      pass: "emdoslhfiwbudwpj",
+    },
+  });
 
+  // Construct the message
   const mailOptions = {
     from: email,
-    to: 'theiaweb.contact@gmail.com',
-    subject: 'Email From Me to MySelf | Contact Form Message',
-    html: `<h1>Contact Form Message</h1>
-      <p>
-        <b>Email: </b>${email}<br>
-        <b>Name: </b>${name}<br>
-        <b>Mobile: </b>${phone}<br>
-        <b>Message: </b>${message}<br>
-        <b>Sujet: </b>${sujet}<br>
-      </p>`
+    to: "theiaweb.contact@gmail.com",
+    subject: `${company} represented by ${name} : ${subject}`,
+    html: `<p>Name: ${name}</p> <p>Email: ${email}</p> <p>Phone: ${phone}</p> <p>Company: ${company}</p> <p>Message: ${message}</p>`,
   };
 
-  transporter.sendMail(mailOptions, (error, data) => {
-    if (error) {
-      return res.send(error.toString());
-    }
-
-    const responseData = JSON.stringify(data);
-    return res.send(`Sent! ${responseData}`);
-  });
+  try {
+    // Send the email
+    await transporter.sendMail(mailOptions);
+    res.status(200).send("Email sent successfully");
+  } catch (error) {
+    console.error("Error sending email:", error);
+    res.status(500).send("Error sending email");
+  }
 });
-
-exports.sendMailOverHTTP = functions.https.onRequest(app);

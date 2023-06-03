@@ -38,26 +38,3 @@ let tabsPortfolio = document.querySelectorAll('.tabs__toggle'),
 
 
 
-
-// Récupérer les éléments nécessaires
-//var form = document.getElementById('myForm');
-//var messageInput = document.getElementById('messageInput');
-//var modal = document.getElementById('myModal');
-//var modalText = document.getElementById('modalText');
-//var closeBtn = document.getElementsByClassName('close')[0];
-
-// Afficher la pop-up de validation
-//form.addEventListener('submit', function(e) {
-  //e.preventDefault(); // Empêcher la soumission du formulaire
-
-  //if (messageInput.value !== '') {
-    //modalText.innerHTML = 'Message envoyé : ' + messageInput.value;
-    //modal.style.display = 'block';
-    //messageInput.value = '';
-  //}
-//});
-
-// Fermer la pop-up
-//closeBtn.addEventListener('click', function() {
-  //modal.style.display = 'none';
-//});
