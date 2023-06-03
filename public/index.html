@@ -211,68 +211,56 @@
     </div>
     <img src="img/contact-elipse.png" alt="">
 
-    <form action="contact.php" method="post">
-        <div class="form__content">
+<form method="post" action="https://your-cloud-function-url">
+  <div class="form__content">
+    <div class="grid-base">
+      <div class="contact__category">
+        <label class="contact__label" for="surname">Nom <span class="contact__star">&#42;</span></label>
+        <input class="contact__input-small" type="text" id="surname" name="name" placeholder="Dupuis">
+      </div>
+      <div class="contact__category">
+        <label class="contact__label" for="name">Prénom <span class="contact__star">&#42;</span></label>
+        <input class="contact__input-small" type="text" id="name" name="name" placeholder="Jean">
+      </div>
+    </div>
+    <div class="grid-base">
+      <div class="contact__category">
+        <label class="contact__label" for="email">Mail <span class="contact__star">&#42;</span></label>
+        <input class="contact__input-small" type="email" id="email" name="email" placeholder="email@exemple.fr">
+      </div>
+      <div class="contact__category">
+        <label class="contact__label" for="phone">Téléphone</label>
+        <input class="contact__input-small" type="text" id="phone" name="phone" placeholder="0122334455">
+      </div>
+    </div>
+    <div class="grid-base">
+      <div class="contact__category">
+        <label class="contact__label" for="company">Société</label>
+        <input class="contact__input-small" type="text" id="company" name="company" placeholder="Tesla">
+      </div>
+      <div class="contact__category">
+        <label class="contact__label" for="subject">Sujet <span class="contact__star">&#42;</span></label>
+        <input class="contact__input-small" type="text" id="subject" name="subject" placeholder="Sujet du message">
+      </div>
+    </div>
+    <div class="contact__msg">
+      <label class="contact__label" for="message">Expliquez nous votre projet <span class="contact__star">&#42;</span></label>
+      <textarea class="contact__input-large" id="message" name="message" placeholder="Message..."></textarea>
+    </div>
+    <div class="contact__footer-top">
+      <div class="contact__footer-cgucheck">
+        <input type="checkbox" id="cgu-check" name="cgu">
+        <label for="cgu-check">J'accepte les  <span><a href="">Conditions Générales d'Utilisation </a></span><span class="contact__star">&#42;</span></label>
+      </div>
+      <p class="contact__footer-star-txt"><span class="contact__star">&#42;</span> Champs obligatoires</p>
+    </div>
+    <div class="contact__footer-bottom">
+      <button class="green_btn" type="submit" value="Send">Envoyer le Message</button>
+      <p class="contact__footer-btn-under">Réponse sous 48h</p>
+    </div>
+  </div>
+</form>
 
-            <div class="grid-base">
-                
-                <div class="contact__category">
-                    <label class="contact__label" for="name">Nom <span class="contact__star">&#42;</span></label>
-                    <input class="contact__input-small" type="text" id="name" name="user_surname" placeholder="Dupuis">    
-                </div>
-                <div class="contact__category">
-                    <label class="contact__label" for="name">Prénom <span class="contact__star">&#42;</span></label>
-                    <input class="contact__input-small" type="text" id="name" name="user_name" placeholder="Jean">    
-                </div>
-            </div>
-            <div class="grid-base">
-                <div class="contact__category">
-                    <label class="contact__label" for="name">Mail <span class="contact__star">&#42;</span></label>
-                    <input class="contact__input-small" type="mail" id="email" name="user_mail" placeholder="email@exemple.fr">    
-                </div>
-                <div class="contact__category">
-                    <label class="contact__label" for="name">Téléphone</label>
-                    <input class="contact__input-small" type="text" id="name" name="user_tel" placeholder="0122334455">    
-                </div>
-            </div>
-            
-            <div class="grid-base">
-                <div class="contact__category">
-                    <label class="contact__label" for="name">Société</label>
-                    <input class="contact__input-small" type="text" id="name" name="user_company" placeholder="Tesla">    
-                </div>
-                <div class="contact__category">
-                    <label class="contact__label" for="name">Sujet <span class="contact__star">&#42;</span></label>
-                    <input class="contact__input-small" type="text" id="name" name="user_subject" placeholder="Suejt du message">    
-                </div>
-            </div>
-            <div class="contact__msg">
-                <label class="contact__label" for="msg">Expliquez nous votre projet <span class="contact__star">&#42;</span></label>
-                <textarea class="contact__input-large" id="msg" name="user_message" placeholder="Message..."></textarea>
-            </div>
-            <div class="contact__footer-top">
-                <div class="contact__footer-cgucheck">
-                    <input type="checkbox" id="cgu-check" name="cgu">
-                    <label for="horns">J'accepte les  <span><a href="">Conditions Générales d'Utilisation </a></span><span class="contact__star">&#42;</span></label>    
-                </div>
-                <p class="contact__footer-star-txt"><span class="contact__star">&#42;</span> Champs obligatoires</p>
-    
-              </div>
-              
-                <div class="contact__footer-bottom">
-                    <button class="green_btn" type="submit" value="Send">Envoyer le Message</button>
-                    <p class="contact__footer-btn-under">Réponse sous 48h</p>
-                </div>
-                
-            
-    
-            
-            
-            
-        </div>
-        
-        
-    </form>
     
 </section>
 
