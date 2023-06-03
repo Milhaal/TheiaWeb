@@ -1,12 +1,12 @@
-const { onRequest } = require("firebase-functions");
-const logger = require("firebase-functions/logger");
-const { onDocumentCreated } = require("firebase-functions/v2/firestore");
-
 const functions = require('firebase-functions');
 const admin = require("firebase-admin");
 const nodemailer = require('nodemailer');
+const express = require('express');
+const cors = require('cors');
 
 admin.initializeApp();
+const app = express();
+app.use(cors());
 
 const transporter = nodemailer.createTransport({
   host: 'smtp.gmail.com',
@@ -18,19 +18,20 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-exports.sendMailOverHTTP = functions.https.onRequest((req, res) => {
+app.post('/sendMailOverHTTP', (req, res) => {
+  const { email, name, phone, message, sujet } = req.body;
+
   const mailOptions = {
-    from: `vinc.charles0@gmail.com`,
-    to: `theiaweb.contact@gmail.com`,
+    from: email,
+    to: 'theiaweb.contact@gmail.com',
     subject: 'Email From Me to MySelf | Contact Form Message',
     html: `<h1>Contact Form Message</h1>
       <p>
-        <b>Email: </b>${req.body.email}<br>
-        <b>Name: </b>${req.body.name}<br>
-        <b>Mobile: </b>${req.body.name}<br>
-        <b>Message: </b>${req.body.message}<br>
-        <b>Sujet: </b>${req.body.sujet}<br>
-
+        <b>Email: </b>${email}<br>
+        <b>Name: </b>${name}<br>
+        <b>Mobile: </b>${phone}<br>
+        <b>Message: </b>${message}<br>
+        <b>Sujet: </b>${sujet}<br>
       </p>`
   };
 
@@ -42,31 +43,6 @@ exports.sendMailOverHTTP = functions.https.onRequest((req, res) => {
     const responseData = JSON.stringify(data);
     return res.send(`Sent! ${responseData}`);
   });
-
-  const leadName = req.body.name;
-  const leadEmail = req.body.email;
-  const leadMobile = req.body.phone;
-  const leadMessage = req.body.message;
-  const leadSujet = req.body.sujet;
-  const settings = {
-    url: "https://us-central1-formtheia.cloudfunctions.net/sendMailOverHTTP",
-    method: "POST",
-    timeout: 0,
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded"
-    },
-    data: {
-      name: leadName,
-      email: leadEmail,
-      mobile: leadMobile,
-      message: leadMessage,
-      sujet: leadSujet
-    }
-  };
-
-  // Make sure to handle the AJAX request properly, as this code assumes the presence of the "$" function for AJAX.
-  // Modify this code to match your specific implementation.
-  $.ajax(settings).done(function (response) {
-    console.log(response);
-  });
 });
+
+exports.sendMailOverHTTP = functions.https.onRequest(app);
