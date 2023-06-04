@@ -57,7 +57,6 @@ const corsOptions = {
 
 // Enable CORS for the Cloud Function
 app.use(cors(corsOptions));
-res.send("Test response");
 exports.testEndpoint = functions.https.onRequest((req, res) => {
   res.send('Test endpoint');
 });
