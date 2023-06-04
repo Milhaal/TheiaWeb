@@ -39,4 +39,14 @@ app.post("/sendMailOverHTTP", async (req, res) => {
   }
 });
 
-exports.sendMailOverHTTP = functions.https.onRequest(app);
+// Configure CORS options
+const corsOptions = {
+  origin: true, // Allow all origins
+};
+
+// Enable CORS for the Cloud Function
+exports.sendMailOverHTTP = functions.https.onRequest((req, res) => {
+  cors(corsOptions)(req, res, () => {
+    app(req, res);
+  });
+});
