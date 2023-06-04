@@ -1,11 +1,15 @@
+const functions = require("firebase-functions");
+const admin = require("firebase-admin");
 const nodemailer = require("nodemailer");
 const express = require("express");
 const cors = require("cors");
-const { logger } = require("firebase-functions");
-const { https, firestore } = require("firebase-functions");
+const {logger} = require("firebase-functions");
+const {onRequest} = require("firebase-functions/v2/https");
+const {onDocumentCreated} = require("firebase-functions/v2/firestore");
 
-const { initializeApp } = require("firebase-admin");
-const { getFirestore } = require("firebase-admin/firestore");
+// The Firebase Admin SDK to access Firestore.
+const {initializeApp} = require("firebase-admin/app");
+const {getFirestore} = require("firebase-admin/firestore");
 
 const firebaseConfig = {
   apiKey: "AIzaSyDB4BfdCWo9fHb4rC2YZl5gOgtikxQHi5g",
@@ -55,32 +59,18 @@ app.post(
     }
   }
 );
-
+// Configure CORS options
 const corsOptions = {
   origin: true, // Allow all origins
 };
 
+// Enable CORS for the Cloud Function
 app.use(cors(corsOptions));
-
-exports.testEndpoint = https.onRequest((req, res) => {
-  res.send("Test endpoint");
+exports.testEndpoint = functions.https.onRequest((req, res) => {
+  res.send('Test endpoint');
 });
 
-exports.sendMailOverHTTP = https.onRequest(app);
+// Export the Cloud Function
+exports.sendMailOverHTTP = functions.https.onRequest(app);
 
-exports.addmessage = https.onRequest(async (req, res) => {
-  const original = req.query.text;
-  const writeResult = await getFirestore()
-    .collection("messages")
-    .add({ original: original });
-  res.json({ result: `Message with ID: ${writeResult.id} added.` });
-});
 
-exports.makeuppercase = firestore
-  .document("/messages/{documentId}")
-  .onCreate((snap, context) => {
-    const original = snap.data().original;
-    logger.log("Uppercasing", context.params.documentId, original);
-    const uppercase = original.toUpperCase();
-    return snap.ref.set({ uppercase }, { merge: true });
-});
