@@ -21,8 +21,8 @@ exports.sendMailOverHTTP = functions.https.onRequest(async (req, res) => {
 
   // Construct the message
   const mailOptions = {
-    from: email,
-    to: "theiaweb.contact@gmail.com",
+    from: "theiaweb.contact@gmail.com",
+    to: email,
     subject: `${company} represented by ${name} : ${subject}`,
     html: `<p>Name: ${name}</p> <p>Email: ${email}</p> <p>Phone: ${phone}</p> <p>Company: ${company}</p> <p>Message: ${message}</p>`,
   };
