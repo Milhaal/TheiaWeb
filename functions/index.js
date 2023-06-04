@@ -11,16 +11,6 @@ const {onDocumentCreated} = require("firebase-functions/v2/firestore");
 const {initializeApp} = require("firebase-admin/app");
 const {getFirestore} = require("firebase-admin/firestore");
 
-const firebaseConfig = {
-  apiKey: "AIzaSyDB4BfdCWo9fHb4rC2YZl5gOgtikxQHi5g",
-  authDomain: "formtheia.firebaseapp.com",
-  databaseURL: "https://formtheia-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "formtheia",
-  storageBucket: "formtheia.appspot.com",
-  messagingSenderId: "335132907653",
-  appId: "1:335132907653:web:d4620962ca0a24131571ec"
-};
-
 initializeApp();
 const app = express();
 app.use(cors());
@@ -30,7 +20,7 @@ const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
     user: "theiaweb.contact@gmail.com",
-    pass: "splnxczgfvlhlnnr",
+    pass: "GC4*EVER!",
   },
 });
 
@@ -45,7 +35,11 @@ app.post(
         from: "theiaweb.contact@gmail.com",
         to: email,
         subject: `${company} represented by ${name} : ${subject}`,
-        html: `<p>Name: ${name}</p> <p>Email: ${email}</p> <p>Phone: ${phone}</p> <p>Company: ${company}</p> <p>Message: ${message}</p>`,
+        html: `<p>Name: ${name}</p> 
+              <p>Email: ${email}</p> 
+              <p>Phone: ${phone}</p> 
+              <p>Company: ${company}</p> 
+              <p>Message: ${message}</p>`,
       };
 
       // Send the email
