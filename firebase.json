@@ -30,7 +30,7 @@
   "hosting": {
     "headers": [
       {
-        "source": "/sendMailOverHTTP",
+        "source": "/formtheia/us-central1/sendMailOverHTTP",
         "function": "sendMailOverHTTP",
         "headers": [
           {

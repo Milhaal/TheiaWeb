@@ -4,9 +4,20 @@ const nodemailer = require("nodemailer");
 const express = require("express");
 const cors = require("cors");
 
-admin.initializeApp();
+const firebaseConfig = {
+  apiKey: "AIzaSyDB4BfdCWo9fHb4rC2YZl5gOgtikxQHi5g",
+  authDomain: "formtheia.firebaseapp.com",
+  databaseURL: "https://formtheia-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "formtheia",
+  storageBucket: "formtheia.appspot.com",
+  messagingSenderId: "335132907653",
+  appId: "1:335132907653:web:d4620962ca0a24131571ec"
+};
+
+admin.initializeApp(firebaseConfig);
 const app = express();
 app.use(cors());
+app.use(express.json());
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -16,7 +27,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-app.post("/sendMailOverHTTP", async (req, res) => {
+app.post("/formtheia/us-central1/sendMailOverHTTP", async (req, res) => {
   try {
     const { name, email, phone, company, subject, message } = req.body;
 
@@ -45,8 +56,11 @@ const corsOptions = {
 };
 
 // Enable CORS for the Cloud Function
-exports.sendMailOverHTTP = functions.https.onRequest((req, res) => {
-  cors(corsOptions)(req, res, () => {
-    app(req, res);
-  });
+app.use(cors(corsOptions));
+res.send("Test response");
+exports.testEndpoint = functions.https.onRequest((req, res) => {
+  res.send('Test endpoint');
 });
+
+// Export the Cloud Function
+exports.sendMailOverHTTP = functions.https.onRequest(app);
