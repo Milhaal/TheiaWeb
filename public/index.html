@@ -211,7 +211,7 @@
     </div>
     <img src="img/contact-elipse.png" alt="">
 
-<form method="POST" action="https://us-central1-formtheia.cloudfunctions.net/sendMailOverHTTP">
+<form id="contactForm">
   <div class="form__content">
     <div class="grid-base">
       <div class="contact__category">
@@ -327,5 +327,54 @@
 
 
     <script src="js/script.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-firestore.js"></script>
+    <script>
+        // Replace with your Firebase project's config object
+        var firebaseConfig = {
+            apiKey: "AIzaSyDB4BfdCWo9fHb4rC2YZl5gOgtikxQHi5g",
+            authDomain: "formtheia.firebaseapp.com",
+            databaseURL: "https://formtheia-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "formtheia",
+            storageBucket: "formtheia.appspot.com",
+            messagingSenderId: "335132907653",
+            appId: "1:335132907653:web:d4620962ca0a24131571ec"        };
+      
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+      
+        // Get a reference to the Firestore database
+        var db = firebase.firestore();
+      </script>
+      <script>
+        // Handle form submission
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+          event.preventDefault(); // Prevent form from submitting and page refresh
+      
+          // Get form values
+          var name = document.getElementById('name').value;
+          var email = document.getElementById('email').value;
+          var message = document.getElementById('message').value;
+      
+          // Save form data to Firestore
+          db.collection('contacts').add({
+            name: name,
+            email: email,
+            message: message,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp()
+          })
+          .then(function(docRef) {
+            console.log('Form submitted successfully!');
+            // Reset form fields
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('message').value = '';
+          })
+          .catch(function(error) {
+            console.error('Error submitting form:', error);
+          });
+        });
+      </script>
+      
 </body>
 </html>
