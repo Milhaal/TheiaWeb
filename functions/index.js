@@ -19,14 +19,22 @@ exports.sendEmailToUser = functions.firestore
     const mailOptions = {
       from: 'theiaweb.contact@gmail.com',
       to: contactData.email,
-      subject: 'Thank you for contacting us',
-      text: `Dear ${contactData.name},\n\nThank you for reaching out to us. We have received your message and will get back to you as soon as possible.\n\nBest regards,\nYour Company`,
+      subject: 'Merci pour votre prise de contact',
+      text: `Chèr(e) ${contactData.name},\n\nThank you for reaching out to us. We have received your message and will get back to you as soon as possible.\n\nBest regards,\nYour Company`,
       html: `<p>Dear ${contactData.name},</p>
         <p>Thank you for reaching out to us. We have received your message and will get back to you as soon as possible.</p>
         <p>Best regards,<br>Your Company</p>`
     };
 
-    return transporter.sendMail(mailOptions)
+    const mailadmin ={
+      from: 'theiaweb.contact@gmail.com',
+      to: 'theiaweb.contact@gmail.com',
+      subject:'Info client',
+      text: `Info ${contactData.surname}${contactData.name},\n ${contactData.email}\n ${contactData.phone}\n ${contactData.phone}\n ${contactData.company} \n\n ${contactData.subject} \n \n${contactData.message}`,
+      html :'<p> Info ${contactData.surname}${contactData.name},\n ${contactData.email}\n ${contactData.phone}\n ${contactData.phone}\n ${contactData.company} \n\n ${contactData.subject} \n \n${contactData.message}</p>'
+    }
+
+    return transporter.sendMail(mailOptions, mailadmin)
       .then(() => {
         console.log('Email sent to user');
         return null;
