@@ -26,21 +26,24 @@ exports.sendEmailToUser = functions.firestore
         <p>Best regards,<br>Your Company</p>`
     };
 
-    const mailadmin ={
+    const mailAdmin = {
       from: 'theiaweb.contact@gmail.com',
       to: 'theiaweb.contact@gmail.com',
-      subject:'Info client',
+      subject: 'Info client',
       text: `Info ${contactData.surname}${contactData.name},\n ${contactData.email}\n ${contactData.phone}\n ${contactData.phone}\n ${contactData.company} \n\n ${contactData.subject} \n \n${contactData.message}`,
-      html :'<p> Info ${contactData.surname}${contactData.name},\n ${contactData.email}\n ${contactData.phone}\n ${contactData.phone}\n ${contactData.company} \n\n ${contactData.subject} \n \n${contactData.message}</p>'
-    }
+      html: `<p> Info ${contactData.surname}${contactData.name},\n ${contactData.email}\n ${contactData.phone}\n ${contactData.phone}\n ${contactData.company} \n\n ${contactData.subject} \n \n${contactData.message}</p>`
+    };
 
-    return transporter.sendMail(mailOptions, mailadmin)
+    const sendMailToUser = transporter.sendMail(mailOptions);
+    const sendMailToAdmin = transporter.sendMail(mailAdmin);
+
+    return Promise.all([sendMailToUser, sendMailToAdmin])
       .then(() => {
-        console.log('Email sent to user');
+        console.log('Emails sent successfully');
         return null;
       })
       .catch((error) => {
-        console.error('Error sending email to user:', error);
+        console.error('Error sending emails:', error);
         return null;
       });
   });
