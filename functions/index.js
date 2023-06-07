@@ -30,8 +30,8 @@ exports.sendEmailToUser = functions.firestore
       from: 'theiaweb.contact@gmail.com',
       to: 'theiaweb.contact@gmail.com',
       subject: 'Info client',
-      text: `Info ${contactData.surname}${contactData.name},\n ${contactData.email}\n ${contactData.phone}\n ${contactData.phone}\n ${contactData.company} \n\n ${contactData.subject} \n \n${contactData.message}`,
-      html: `<p> Info ${contactData.surname}${contactData.name},\n ${contactData.email}\n ${contactData.phone}\n ${contactData.phone}\n ${contactData.company} \n\n ${contactData.subject} \n \n${contactData.message}</p>`
+      text: `Info \n\n Nom du client : ${contactData.surname}${contactData.name},\n\n Email : ${contactData.email}\n\n Téléphone : ${contactData.phone}\n\n Compagny/Entreprise du client : ${contactData.company} \n\n Sujet du message : ${contactData.subject} \n\n Contenu du message envoyé : ${contactData.message}`,
+      html: `<p> Info <br><br> Nom du client : ${contactData.surname}${contactData.name},<br><br>Email : ${contactData.email}<br><br>Téléphone : ${contactData.phone}<br><br> Compagny/Entreprise du client : ${contactData.company} <br><br> Sujet du message : ${contactData.subject} <br><br> Contenu du message envoyé : ${contactData.message}</p>`
     };
 
     const sendMailToUser = transporter.sendMail(mailOptions);
