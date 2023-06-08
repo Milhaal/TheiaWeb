@@ -197,6 +197,7 @@ li{
     font-weight: var(--font-regular);
     color: var(--black);
     font-size: var(--h3-font-size);
+    margin-bottom: 15px;
   }
   
   .section__text {
@@ -531,8 +532,11 @@ margin-bottom: 5px;
 }
 
 
+.expertises__cards {
+    padding: 35% 20%;
+}
+
 .card-one {
-  padding: 35% 20%;
   background: url(../img/expertises-card1.png) no-repeat;
   background-size: cover;
   background-position: center;
@@ -543,7 +547,6 @@ margin-bottom: 5px;
 }
 
 .card-two {
-  padding: 35% 20%;
   background: url(../img/expertises-card2.png) no-repeat;
   background-size: cover;
   background-position: center;
@@ -554,7 +557,6 @@ margin-bottom: 5px;
 }
 
 .card-three {
-  padding: 35% 20%;
   background: url(../img/expertises-card3.png) no-repeat;
   background-size: cover;
   background-position: center;
@@ -565,7 +567,6 @@ margin-bottom: 5px;
 }
 
 .card-four {
-  padding: 35% 20%;
   background: url(../img/expertises-card4.png) no-repeat;
   background-size: cover;
   background-position: center;
@@ -582,10 +583,43 @@ margin-bottom: 5px;
 }
 
 
-
 .is-active {
   display: block;
 }
+
+.tabs__content-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.tabs__content-title {
+  font-family: var(--kanit);
+  font-weight: var(--font-bold) ;
+  font-size: var(--h3-font-size);
+  color: var(--black);
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.tabs__content-separation {
+  width: 100px;
+  border: 2px solid var(--pink);
+}
+
+.tabs__content-content {
+  color: var(--black);
+  font-size: var(--normal-font-size);
+  font-family: var(--roboto);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 0;
+}
+
+
 
 
 /*==================== ROADMAP ====================*/
@@ -874,6 +908,10 @@ gap: 15px;
   .team__content-right {
     gap: 25px;
   }
+
+  .expertises__cards {
+    padding: 8% 5%;
+}
  
 }
 
@@ -909,6 +947,10 @@ gap: 15px;
   .team__content-mobile {
     display: none;
   }
+  .tab-mobile {
+  display: none;
+}
+
 }
 
 @media only screen and (max-width: 1120px) {
