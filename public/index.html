@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Theia Web | L'Agence Web 3.0</title>
-    <link rel="icon" href="public\img\logo-meta.png" type="img/icon type">
+    <link rel="icon" href="img/logo-meta.png" type="img/icon type">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,7 +23,7 @@
         <div class="nav__content">
             <a href="#" ><img class="nav__content-logo" src=img/logo.png alt=""></a>
           <ul class="nav__menu">
-            <li><a href="#">Expertises</a></li>
+            <li><a href="#expertises">Expertises</a></li>
             <li><a href="#">Tarifs</a></li>
             <li class="nav__menu-btn"><a href="#contact">Contact</a></li>
           </ul>
@@ -37,9 +37,9 @@
         
             <div class="navbar__mobile-content" id="menu">
             <ul>
-                <li><a href="">Expertises</a></li>
+                <li><a href="#expertises">Expertises</a></li>
             <li><a href="">Tarifs</a></li>
-            <li><a href="">Contact</a></li>
+            <li><a href="#contact">Contact</a></li>
             </ul>
     
           </div>
@@ -58,7 +58,7 @@
                     Chez <b>Theia Web</b> nous nous engageons à créer le site web qui les atteindra.</p>
                 
                 <div class="home__cta"> 
-                    <button class="btn__pink"><a href="">NOS EXPERTISES</a></button>
+                    <button class="btn__pink"><a href="#expertises">NOS EXPERTISES</a></button>
                     <button class="btn__white"><a href="#contact">NOUS CONTACTER</a></button>
                 </div>
             </div>
@@ -117,7 +117,7 @@
 
 </section>
 
-<!--<section id="expertises" class="section">
+<section id="expertises" class="section">
     <div class="expertises__content">
         <div class="section-titlebox"> 
             <p class="section__title-back back-last">Nos Expertises</p>
@@ -125,41 +125,43 @@
             <h2 class="section__title">Nos expertises</h2>
         </div>
         <h3 class="section__subtitle">Vous souhaitez booster la croissance de votre entreprise ? La solution se trouve ici</h3>
-        <p class="section__text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took </p>
+        <p class="section__text">Que vous souhaitiez développer une présence en ligne percutante ou optimiser votre site web actuel pour une meilleure visibilité, notre équipe est prête à relever tous les défis. Nous sommes passionnés par la réussite de nos clients et nous nous engageons à les accompagner tout au long de leur trensition numérique, en leur offrant un soutien constant et des conseils avisés.</p>
     </div>
     <div class="expertises__carrousel grid-expertises">
         <div class="expertises__carrousel-card">
-            <div class="card-one">
+            <div class="expertises__cards card-one">
                 <h4>Design UX/UI</h4>
-                <div class="expertises__carrousel-card-btn" href="">
+                <div class="expertises__carrousel-card-btn">
                     <span class="tabs__toggle is-active">Voir Plus</span>
                 </div>
             </div>
             
         </div>
+
+        
         <div class="expertises__carrousel-card">
-            <div class="card-two">
+            <div class="expertises__cards card-two">
                 <h4>Développement</h4>
-                <div class="expertises__carrousel-card-btn" href="">
+                <div class="expertises__carrousel-card-btn">
                     <span class="tabs__toggle is-active">Voir Plus</span>
                 </div>
             </div>
             
         </div>
         <div class="expertises__carrousel-card">
-            <div class="card-three">
+            <div class="expertises__cards card-three">
                 <h4>Communication</h4>
-                <div class="expertises__carrousel-card-btn" href="">
+                <div class="expertises__carrousel-card-btn">
                     <span class="tabs__toggle is-active">Voir Plus</span>
                 </div>
             </div>
             
         </div>
         <div class="expertises__carrousel-card">
-            <div class="card-four">
+            <div class="expertises__cards card-four">
                 <h4>Branding</h4>
-                <div class="expertises__carrousel-card-btn" href="">
-                    <span class="tabs__toggle">Voir Plus</span>
+                <div class="expertises__carrousel-card-btn">
+                    <span class="tabs__toggle is-active">Voir Plus</span>
                 </div>
             </div>
             
@@ -168,23 +170,51 @@
     </div>
 
 
-     <div class="tabs__content">
-
-        content
+     
+    <div class="tabs__content ">
+      <div class="tabs__content-head">
+        <h5 class="tabs__content-title">Design UX/UI</h5>
+        <hr class="tabs__content-separation">
+      </div>
+        <div class="tabs__content-content">
+          <p>Chez ThéiaWeb, notre expertise en matière d'UX/UI (Expérience Utilisateur /Interface Utilisateur) est l'un de nos principaux atouts. </p>
+          <p>Nous comprenons que la conception d'une expérience utilisateur dynamique est essentielle pour capter l'attention des utilisateurs, les engager et les convertir en clients fidèles.</p>
+        </div>
     </div>
 
-    <div class="tabs__content">
-        content
+    <div class="tabs__content" id="#devweb">
+      <div class="tabs__content-head">
+        <h5 class="tabs__content-title">Developpement Web</h5>
+        <hr class="tabs__content-separation">
+      </div>
+        <div class="tabs__content-content">
+          <p>Chez ThéiaWeb, notre expertise en développement web est au cœur de notre activité. </p>
+          <p>Nous maîtrisons les technologies avancées et nous nous tenons constamment à jour des dernières tendances et pratiques en matière de développement. </p>
+        </div>
        </div>                        
     
-    <div class="tabs__content">
-        content
+    <div class="tabs__content" id="#communication">
+      <div class="tabs__content-head">
+        <h5 class="tabs__content-title">Communication</h5>
+        <hr class="tabs__content-separation">
+      </div>
+        <div class="tabs__content-content">
+          <p>Chez ThéiaWeb, nous comprenons l'importance de la communication efficace dans le monde numérique en constante évolution. </p>
+          <p>Nous mettons en avant notre expertise en communication pour aider nos clients à atteindre leurs objectifs commerciaux et à se démarquer sur le web. </p>
+        </div>
      </div>
  
-     <div class="tabs__content">
-        content         
+     <div class="tabs__content" id="#branding">
+      <div class="tabs__content-head">
+        <h5 class="tabs__content-title">Branding</h5>
+        <hr class="tabs__content-separation">
+      </div>
+        <div class="tabs__content-content">
+          <p>Chez ThéiaWeb, nous sommes fiers de notre expertise en branding et de notre capacité à aider nos clients à construire des marques fortes et mémorables. </p>
+          <p>Nous comprenons que le branding va au-delà de la simple création d'un logo. </p>
+        </div>         
     </div>
-</section>-->
+</section>
 
 
 <!--<section id="roadmap" class="section">
