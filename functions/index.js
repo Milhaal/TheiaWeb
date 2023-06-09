@@ -20,18 +20,18 @@ exports.sendEmailToUser = functions.firestore
       from: 'theiaweb.contact@gmail.com',
       to: contactData.email,
       subject: 'Merci pour votre prise de contact',
-      text: `Chèr(e) ${contactData.name},\n\nThank you for reaching out to us. We have received your message and will get back to you as soon as possible.\n\nBest regards,\nYour Company`,
-      html: `<p>Dear ${contactData.name},</p>
-        <p>Thank you for reaching out to us. We have received your message and will get back to you as soon as possible.</p>
-        <p>Best regards,<br>Your Company</p>`
+      text: `Chèr(e) ${contactData.name},\n\nMerci de nous avoir contactés. Nous avons bien reçu votre message et nous vous répondrons dans les plus brefs délais.\n\nCordialement,\nTheia Web`,
+      html: `<p>Chèr(e) ${contactData.name},</p>
+        <p>Merci de nous avoir contactés. Nous avons bien reçu votre message et nous vous répondrons dans les plus brefs délais.</p>
+        <p>Cordialement,<br>Theia Web</p>`
     };
 
     const mailAdmin = {
       from: 'theiaweb.contact@gmail.com',
       to: 'theiaweb.contact@gmail.com',
       subject: 'Info client',
-      text: `Info \n\n Nom du client : ${contactData.surname}${contactData.name},\n\n Email : ${contactData.email}\n\n Téléphone : ${contactData.phone}\n\n Compagny/Entreprise du client : ${contactData.company} \n\n Sujet du message : ${contactData.subject} \n\n Contenu du message envoyé : ${contactData.message}`,
-      html: `<p> Info <br><br> Nom du client : ${contactData.surname}${contactData.name},<br><br>Email : ${contactData.email}<br><br>Téléphone : ${contactData.phone}<br><br> Compagny/Entreprise du client : ${contactData.company} <br><br> Sujet du message : ${contactData.subject} <br><br> Contenu du message envoyé : ${contactData.message}</p>`
+      text: `Info \n\n Nom du client : ${contactData.surname} ${contactData.name},\n\n Email : ${contactData.email}\n\n Téléphone : ${contactData.phone}\n\n Compagny/Entreprise du client : ${contactData.company} \n\n Sujet du message : ${contactData.subject} \n\n Contenu du message envoyé : ${contactData.message}`,
+      html: `<p> Info <br><br> Nom du client : ${contactData.surname} ${contactData.name},<br><br>Email : ${contactData.email}<br><br>Téléphone : ${contactData.phone}<br><br> Compagny/Entreprise du client : ${contactData.company} <br><br> Sujet du message : ${contactData.subject} <br><br> Contenu du message envoyé : ${contactData.message}</p>`
     };
 
     const sendMailToUser = transporter.sendMail(mailOptions);
