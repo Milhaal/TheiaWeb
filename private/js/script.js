@@ -1,4 +1,3 @@
-
 // -----------------TOGGLE MENU------------------- //
 
 var menuOpen = false;

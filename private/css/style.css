@@ -137,10 +137,12 @@ li{
 .home__title,
 .home__title-back {
   font-size: var(--h1-font-size);
+  animation: fadeIn 1s forwards;
 }
 .section__title,
 .section__title-back {
   font-size: var(--h2-font-size);
+  animation: fadeIn 1s forwards;
 }
 .section-titlebox {
   position: relative;
@@ -230,6 +232,10 @@ li{
       padding: 20px 40px;  
     }
     
+    .btn__pink:hover,
+    .btn__white:hover {
+      transform: scale(1.05);
+    }
 
   /*==================== LAYOUT ====================*/
 
@@ -284,6 +290,15 @@ li{
     text-transform: uppercase;
     gap: 2rem;
   }
+
+.nav__menu li {
+  transition: all 0.3s ease;
+}
+  
+.nav__menu li:hover {
+  transform: scale(1.1);
+}
+
   .nav__menu li a{
     font-family: var(--lato);
     font-weight: var(--font-semi-bold);
@@ -318,10 +333,12 @@ li{
 
 .navbar__mobile-menuIcon {
   width: 24px;
+  transition: transform 0.3s ease;
 }
 
 .navbar__mobile-menuIcon:hover {
 cursor: pointer;
+transform: scale(1.2);
 }
 
 .navbar__mobile-content {
@@ -432,6 +449,7 @@ cursor: pointer;
   padding-top: 18px;
   width: 236px;
   height: 288px;
+  transition: transform 0.3s ease;
 }
 
 
@@ -467,6 +485,9 @@ cursor: pointer;
   justify-content: center;
 }
   
+.team__content-left-card:hover {
+  transform: scale(1.1);
+}
 
 /*==================== EXPERTISES ====================*/
 .expertises__content {
@@ -534,6 +555,7 @@ margin-bottom: 5px;
 
 .expertises__cards {
     padding: 35% 20%;
+    transition: transform 0.3s ease;
 }
 
 .card-one {
@@ -619,7 +641,9 @@ margin-bottom: 5px;
   padding: 0;
 }
 
-
+.expertises__cards:hover {
+  transform: scale(1.05);
+}
 
 
 /*==================== ROADMAP ====================*/
@@ -665,6 +689,7 @@ margin-bottom: 5px;
   font-weight: var(--font-bold);
   font-size: var(--small-font-size);
   color: var(--black);
+  transition: transform 0.3s ease;
 }
 
 .contact__star {
@@ -677,6 +702,7 @@ margin-bottom: 5px;
   padding-bottom: 10px;
   outline: none;
   font-size: var(--small-font-size);
+  transition: border-color 0.3s ease;
 }
 
 .contact__input-small::placeholder,
@@ -752,7 +778,15 @@ margin-bottom: 5px;
   color: var(--black);
 }
 
+.contact__input-small:focus {
+  border-color: #ff80ab;
+  transform: scale(1.05);
 
+}
+
+.green_btn:hover{
+  transform: scale(1.1);
+}
 
 /*==================== FOOTER ====================*/
 footer {
@@ -1067,4 +1101,26 @@ gap: 15px;
 .close {
   color: #aaa;
   float: right;
+}
+
+/*==========ANIMATION=========*/
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
