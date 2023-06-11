@@ -416,5 +416,44 @@
           });
         });
       </script>
+
+      <!-- <script>
+        // JavaScript code goes here
+        // Set a boolean variable to control the pop-up display
+        var showPopup = false;
+    
+        // Function to display a pop-up
+        function displayPopup(message) {
+          var popup = document.createElement('div');
+          popup.className = 'popup';
+          popup.innerHTML = message;
+    
+          var closeBtn = document.createElement('button');
+          closeBtn.innerHTML = 'Close';
+          closeBtn.onclick = function() {
+            document.body.removeChild(popup);
+          };
+    
+          popup.appendChild(closeBtn);
+          document.body.appendChild(popup);
+        }
+    
+        // Function to toggle the pop-up
+        function togglePopup() {
+          showPopup = !showPopup; // Toggle the boolean value
+    
+          if (showPopup) {
+            displayPopup('<h3>Message envoyé !<h3>');
+          }
+        }
+    
+        // Example console logs
+        console.log('This is a console log message.');
+    
+        // Toggle the pop-up
+        togglePopup();
+      </script> -->
+
+
 </body>
 </html>
